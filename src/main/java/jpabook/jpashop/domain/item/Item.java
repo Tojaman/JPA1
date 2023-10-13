@@ -9,15 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // SINGLE_TABLE : 한 테이블이 다 떄려 박는거
+// SINGLE_TABLE 전략 : 한 테이블에 자식 테이블 데이터를 다 때려 넣음(자식 테이블 구분 컬럼(DTYPE) 설정 필수
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
 @Getter
 @Setter
-public abstract class Item {
+public abstract class Item { // 추상 클래스
 
     @Id
-    @GeneratedValue
-    @Column(name = "item_id")
+    @GeneratedValue // 키 값을 자동으로 생성(전략 설정 안하면 1, 2, 3... 정수로 설정됨)
+    @Column(name = "item_id") // DB 테이블 열 이름
     private Long id;
 
     private String name;
