@@ -14,7 +14,8 @@ public class Delivery {
     @Column(name = "delevery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delivery") // 주인이 아니니깐 읽기만 가능
+    // XToOne = 기본이 즉시로딩(EAGER)이므로 LAZY로 변경해줘야 한다.
+    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY) // 주인이 아니니깐 읽기만 가능
     private Order order;
 
     @Embedded
