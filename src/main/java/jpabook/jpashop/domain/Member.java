@@ -19,7 +19,7 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    private String username;
+    private String name;
 
     @Embedded // 임베디드 자료형
     private Address address;
